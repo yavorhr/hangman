@@ -1,7 +1,7 @@
 package com.hangman.game.gui.frame;
 
 import com.hangman.game.gui.panels.EmptyPanel;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hangman.game.gui.panels.ImagesPanel;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,20 +13,20 @@ import java.awt.event.WindowEvent;
 @Component
 public class HangmanFrame extends JFrame {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     private final EmptyPanel emptyPanel;
+    private final ImagesPanel imagesPanel;
     //will keep all our imported panels that will be added to main JFrame
     private JPanel mainPanel;
 
-    public HangmanFrame(EmptyPanel emptyPanel) {
+    public HangmanFrame(EmptyPanel emptyPanel, ImagesPanel imagesPanel) {
         this.emptyPanel = emptyPanel;
+        this.imagesPanel = imagesPanel;
     }
 
-    //it will be automatically invoked. Wew set the settings of the Frame of the app
+    //it will be automatically invoked after the HangmanFrame constructor is called.
+    // We set the settings of the Frame of the app
     @PostConstruct
     public void createMainGUI() {
         this.setBounds(100, 70, 1100, 500);
@@ -40,7 +40,10 @@ public class HangmanFrame extends JFrame {
 
         this.mainPanel = new JPanel();
         this.mainPanel.setLayout(new BorderLayout());
+
         this.mainPanel.add(emptyPanel, BorderLayout.SOUTH);
+        this.mainPanel.add(imagesPanel, BorderLayout.EAST);
+
         this.add(mainPanel);
         this.setVisible(true);
     }
