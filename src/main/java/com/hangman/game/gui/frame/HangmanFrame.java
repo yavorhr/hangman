@@ -2,6 +2,7 @@ package com.hangman.game.gui.frame;
 
 import com.hangman.game.gui.panels.EmptyPanel;
 import com.hangman.game.gui.panels.ImagesPanel;
+import com.hangman.game.gui.panels.LettersPanel;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -17,12 +18,14 @@ public class HangmanFrame extends JFrame {
 
     private final EmptyPanel emptyPanel;
     private final ImagesPanel imagesPanel;
+    private final LettersPanel lettersPanel;
     //will keep all our imported panels that will be added to main JFrame
     private JPanel mainPanel;
 
-    public HangmanFrame(EmptyPanel emptyPanel, ImagesPanel imagesPanel) {
+    public HangmanFrame(EmptyPanel emptyPanel, ImagesPanel imagesPanel, LettersPanel lettersPanel) {
         this.emptyPanel = emptyPanel;
         this.imagesPanel = imagesPanel;
+        this.lettersPanel = lettersPanel;
     }
 
     //it will be automatically invoked after the HangmanFrame constructor is called.
@@ -43,6 +46,7 @@ public class HangmanFrame extends JFrame {
 
         this.mainPanel.add(emptyPanel, BorderLayout.SOUTH);
         this.mainPanel.add(imagesPanel, BorderLayout.EAST);
+        this.mainPanel.add(lettersPanel,BorderLayout.CENTER);
 
         this.add(mainPanel);
         this.setVisible(true);
