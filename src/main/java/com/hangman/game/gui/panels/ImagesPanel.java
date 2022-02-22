@@ -48,4 +48,12 @@ public class ImagesPanel extends JPanel {
         g2.dispose();
         return new ImageIcon(dst);
     }
+
+    public List<JLabel> getImagesList() {
+        return imagesList;
+    }
+
+    public void setImagesList(List<JLabel> imagesList) {
+        this.imagesList = imagesList;
+    }
 }

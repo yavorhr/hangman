@@ -63,6 +63,21 @@ public class LettersPanel extends JPanel {
         return lettersPanel;
     }
 
+    public void disableDefaultLetters(char firstLetterInWord, char lastLetterInWord) {
+        String firstLetter = String.valueOf(firstLetterInWord);
+        String lastLetter = String.valueOf(lastLetterInWord);
+
+        // disable first letter
+        JButton firstLetterInWordButton = lettersMap.get(firstLetter.toUpperCase());
+        firstLetterInWordButton.setEnabled(false);
+        firstLetterInWordButton.setBackground(Color.GREEN);
+
+        // disable last letter
+        JButton lastLetterInWordButton = lettersMap.get(lastLetter.toUpperCase());
+        lastLetterInWordButton.setEnabled(false);
+        lastLetterInWordButton.setBackground(Color.green);
+    }
+
     public Map<String, JButton> getLettersMap() {
         return lettersMap;
     }

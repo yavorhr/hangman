@@ -1,5 +1,6 @@
 package com.hangman.game.gui.listeners;
 
+import com.hangman.game.gui.panels.WordPanel;
 import com.hangman.game.util.SpringContext;
 import org.springframework.context.ApplicationContext;
 
@@ -23,5 +24,9 @@ public class ButtonListener implements ActionListener {
 
         // get ApplicationContext
         ApplicationContext context = SpringContext.getApplicationContext();
+
+        //get instance of the WordPanel bean
+        WordPanel wordPanel = (WordPanel) context.getBean(WordPanel.class);
+        wordPanel.checkLetter(letter);
     }
 }
