@@ -41,4 +41,7 @@
         this.setLocation(x, y);
         this.setVisible(true);
     }
+
+    9. Create WordRepository, WordService. Save 1000 Words to the DB. Implement randomWord() method and invoke it in the WordPanel;
+    10. Create Menu options
  */

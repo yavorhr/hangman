@@ -1,5 +1,6 @@
 package com.hangman.game.gui.frame;
 
+import com.hangman.game.gui.menu.Menu;
 import com.hangman.game.gui.panels.EmptyPanel;
 import com.hangman.game.gui.panels.ImagesPanel;
 import com.hangman.game.gui.panels.LettersPanel;
@@ -21,14 +22,16 @@ public class HangmanFrame extends JFrame {
     private final ImagesPanel imagesPanel;
     private final LettersPanel lettersPanel;
     private final WordPanel wordPanel;
+    private final Menu menu;
     //will keep all our imported panels that will be added to main JFrame
     private JPanel mainPanel;
 
-    public HangmanFrame(EmptyPanel emptyPanel, ImagesPanel imagesPanel, LettersPanel lettersPanel, WordPanel wordPanel) {
+    public HangmanFrame(EmptyPanel emptyPanel, ImagesPanel imagesPanel, LettersPanel lettersPanel, WordPanel wordPanel, Menu menu) {
         this.emptyPanel = emptyPanel;
         this.imagesPanel = imagesPanel;
         this.lettersPanel = lettersPanel;
         this.wordPanel = wordPanel;
+        this.menu = menu;
     }
 
     //it will be automatically invoked after the HangmanFrame constructor is called.
@@ -53,6 +56,7 @@ public class HangmanFrame extends JFrame {
         this.mainPanel.add(wordPanel, BorderLayout.NORTH);
 
         this.add(mainPanel);
+        this.setJMenuBar(menu);
         this.setVisible(true);
     }
 
