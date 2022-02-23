@@ -1,6 +1,7 @@
 package com.hangman.game.gui.panels;
 
 import com.hangman.game.gui.frame.HangmanFrame;
+import com.hangman.game.service.WordService;
 import com.hangman.game.util.Helper;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -22,14 +23,15 @@ public class WordPanel extends JPanel {
 
     private final LettersPanel lettersPanel;
     private final ImagesPanel imagesPanel;
-
+    private final WordService wordService;
 
     private final HangmanFrame hangmanFrame;
 
     @Lazy
-    public WordPanel(LettersPanel lettersPanel, ImagesPanel imagesPanel, HangmanFrame hangmanFrame) {
+    public WordPanel(LettersPanel lettersPanel, ImagesPanel imagesPanel, WordService wordService, HangmanFrame hangmanFrame) {
         this.lettersPanel = lettersPanel;
         this.imagesPanel = imagesPanel;
+        this.wordService = wordService;
         this.hangmanFrame = hangmanFrame;
 
         //add specific panel properties
@@ -40,7 +42,7 @@ public class WordPanel extends JPanel {
 
     @PostConstruct
     public JPanel createPanel() {
-        generatedWord = "GAME";
+        generatedWord = wordService.getRandomWord();
         this.generatedWordList = new ArrayList<>();
         noOfAttempts = 0;
 
