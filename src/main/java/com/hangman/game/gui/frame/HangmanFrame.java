@@ -56,5 +56,19 @@ public class HangmanFrame extends JFrame {
         this.setVisible(true);
     }
 
+    public void newGame() {
+        this.dispose();
+        int x = this.getX();
+        int y = this.getY();
+        this.clearPanels();
+        this.setLocation(x, y);
+        this.setVisible(true);
+    }
+
+    private void clearPanels() {
+        this.lettersPanel.clear();
+        this.wordPanel.clear();
+        this.imagesPanel.clear();
+    }
 
 }

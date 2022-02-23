@@ -1,6 +1,8 @@
 package com.hangman.game.gui.panels;
 
+import com.hangman.game.gui.frame.HangmanFrame;
 import com.hangman.game.util.Helper;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -21,9 +23,14 @@ public class WordPanel extends JPanel {
     private final LettersPanel lettersPanel;
     private final ImagesPanel imagesPanel;
 
-    public WordPanel(LettersPanel lettersPanel, ImagesPanel imagesPanel) {
+
+    private final HangmanFrame hangmanFrame;
+
+    @Lazy
+    public WordPanel(LettersPanel lettersPanel, ImagesPanel imagesPanel, HangmanFrame hangmanFrame) {
         this.lettersPanel = lettersPanel;
         this.imagesPanel = imagesPanel;
+        this.hangmanFrame = hangmanFrame;
 
         //add specific panel properties
         this.setLayout(new FlowLayout());
@@ -93,6 +100,7 @@ public class WordPanel extends JPanel {
                 v.setEnabled(false);
             });
             JOptionPane.showMessageDialog(null, "Congratulations! You managed to find the word!");
+            hangmanFrame.newGame();
         } else if (!letterFound) {
             // change image from smile -> sad (to identify a missed letter)
             imagesPanel.getImagesList().get(noOfAttempts).setIcon(imagesPanel.scale(Helper.SAD_IMG.getImage()));
@@ -103,7 +111,8 @@ public class WordPanel extends JPanel {
                 lettersPanel.getLettersMap().forEach((k, v) -> {
                     v.setEnabled(false);
                 });
-                JOptionPane.showMessageDialog(null,"You were not able to find the word!/n The word was: " + generatedWord);
+                JOptionPane.showMessageDialog(null, "You were not able to find the word!/n The word was: " + generatedWord);
+                hangmanFrame.newGame();
             }
         }
     }
@@ -119,5 +128,9 @@ public class WordPanel extends JPanel {
         return true;
     }
 
+    public void clear() {
+        this.removeAll();
+        this.createPanel();
+    }
 
 }

@@ -85,4 +85,9 @@ public class LettersPanel extends JPanel {
     public void setLettersMap(Map<String, JButton> lettersMap) {
         this.lettersMap = lettersMap;
     }
+
+    public void clear() {
+        this.removeAll();
+        this.createPanel();
+    }
 }

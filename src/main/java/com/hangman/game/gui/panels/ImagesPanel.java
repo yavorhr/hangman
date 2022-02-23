@@ -56,4 +56,9 @@ public class ImagesPanel extends JPanel {
     public void setImagesList(List<JLabel> imagesList) {
         this.imagesList = imagesList;
     }
+
+    public void clear() {
+        this.removeAll();
+        this.createPanel();
+    }
 }

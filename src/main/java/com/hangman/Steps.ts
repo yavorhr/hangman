@@ -8,4 +8,5 @@
 4. SpringContext class - component used to autowire the spring application context inside a non-spring class
 5. Implement Button and MouseListener
 6. Build LettersPanel and inject it in HangmanFrame main panel
+7. Build WordPanel and inject it in HangmanFrame main panel
  */
